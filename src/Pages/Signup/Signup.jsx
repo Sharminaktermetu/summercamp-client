@@ -2,73 +2,97 @@
 import { useForm } from 'react-hook-form';
 
 const Signup = () => {
-  const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit, formState: { errors }, watch } = useForm();
+    const password = watch('password');
 
-  const onSubmit = (data) => {
-    console.log(data); // Handle form submission here
-  };
+    const onSubmit = (data) => {
+        console.log(data); // Handle form submission here
+    };
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label>Name</label>
-        <input type="text" {...register('name', { required: true })} />
-        {errors.name && <span>Please enter your name</span>}
-      </div>
+    const validatePassword = (value) => {
+        if (value === password) {
+            return true;
+        }
+        return 'Passwords do not match';
+    };
 
-      <div>
-        <label>Email</label>
-        <input
-          type="email"
-          {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
-        />
-        {errors.email && <span>Please enter a valid email address</span>}
-      </div>
+    return (
+       <div className='w-9/12 m-auto p-16'>
+             <form onSubmit={handleSubmit(onSubmit)}>
+             <h2 className="text-3xl text-center font-extrabold my-10">SIGNUP NOW <span className="text-yellow-600">!!!</span></h2>
+                <div className="grid grid-cols-2 gap-10">
+            <div>
+                <label>Name</label>
+                <input type="text"
+                    className="input input-bordered w-full input-warning "
+                    {...register('name', { required: true })} />
+                {errors.name && <span className='text-red-600'>Please enter your name</span>}
+            </div>
 
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          {...register('password', { required: true, minLength: 6 })}
-        />
-        {errors.password && <span>Please enter a password with at least 6 characters</span>}
-      </div>
+            <div>
+                <label>Email</label>
+                <input
+                    className="input input-bordered w-full input-warning "
+                    type="email"
+                    {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+                />
+                {errors.email && <span className='text-red-600'>Please enter a valid email address</span>}
+            </div>
 
-      <div>
-        <label>Confirm Password</label>
-        <input
-          type="password"
-          {...register('confirmPassword', {
-            required: true,
-            validate: (value) => value === data?.password,
-          })}
-        />
-        {errors.confirmPassword && <span>Passwords do not match</span>}
-      </div>
+            <div>
+                <label>Password</label>
+                <input
+                    className="input input-bordered w-full input-warning "
+                    type="password"
+                    {...register('password', { required: true, minLength: 6 })}
+                />
+                {errors.password && <span className='text-red-600' >Please enter a password with at least 6 characters</span>}
+            </div>
 
-      <div>
-        <label>Photo URL</label>
-        <input type="text" {...register('photoURL')} />
-      </div>
+            <div>
+                <label>Confirm Password</label>
+                <input
+                    className="input input-bordered w-full input-warning "
+                    type="password"
+                    {...register('confirmPassword', {
+                        required: true,
+                        validate: validatePassword,
+                    })}
+                />
+                {errors.confirmPassword && <span className='text-red-600'>{errors.confirmPassword.message}</span>}
+            </div>
 
-      <div>
-        <label>Gender (optional)</label>
-        <input type="text" {...register('gender')} />
-      </div>
+            <div>
+                <label>Photo URL</label>
+                <input type="text" 
+                    className="input input-bordered w-full input-warning "
+                {...register('photoURL')} />
+            </div>
 
-      <div>
-        <label>Phone Number (optional)</label>
-        <input type="text" {...register('phoneNumber')} />
-      </div>
+            <div>
+                <label>Gender (optional)</label>
+                <input type="text"
+                    className="input input-bordered w-full input-warning "
+                    {...register('gender')} />
+            </div>
 
-      <div>
-        <label>Address (optional)</label>
-        <input type="text" {...register('address')} />
-      </div>
+            <div>
+                <label>Phone Number (optional)</label>
+                <input type="text"
+                    className="input input-bordered w-full input-warning "
+                    {...register('phoneNumber')} />
+            </div>
 
-      <button type="submit">Sign Up</button>
-    </form>
-  );
+            <div>
+                <label>Address (optional)</label>
+                <input type="text" className="input input-bordered w-full input-warning " {...register('address')} />
+            </div>
+
+            </div>
+            <button type="submit" className='btn btn-info w-full mt-10'>Sign Up</button>
+        </form>
+       </div>
+    );
 };
 
 export default Signup;
