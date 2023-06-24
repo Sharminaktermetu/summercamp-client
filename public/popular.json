@@ -1,39 +1,56 @@
 [
-    {
+  {
       "bannerImage": "https://ecdn.teacherspayteachers.com/thumbitem/Pancake-Writing-Prompt-Crafts-606535-1668611599/original-606535-1.jpg",
       "instructorName": "John Smith",
       "ratings": 4.8,
-      "enrollmentCount": 2500
-    },
-    {
+      "enrollmentCount": 2500,
+      "price": "$49.99",
+      "availableSeats": 100,
+      "id": "abc123"
+  },
+  {
       "bannerImage": "https://img.freepik.com/premium-psd/delicious-fresh-fruits-social-media-post-template_440834-170.jpg",
       "instructorName": "Jane Doe",
       "ratings": 4.5,
-      "enrollmentCount": 1800
-    },
-    {
+      "enrollmentCount": 1800,
+      "price": "$29.99",
+      "availableSeats": 50,
+      "id": "def456"
+  },
+  {
       "bannerImage": "https://cdn3.vectorstock.com/i/1000x1000/68/72/cooking-school-courses-culinary-class-vector-19006872.jpg",
       "instructorName": "David Johnson",
       "ratings": 4.9,
-      "enrollmentCount": 3500
-    },
-    {
+      "enrollmentCount": 3500,
+      "price": "$59.99",
+      "availableSeats": 200,
+      "id": "ghi789"
+  },
+  {
       "bannerImage": "https://i.ytimg.com/vi/TqaJhDRzE70/maxresdefault.jpg",
       "instructorName": "Emily Wilson",
       "ratings": 4.7,
-      "enrollmentCount": 2900
-    },
-    {
+      "enrollmentCount": 2900,
+      "price": "$39.99",
+      "availableSeats": 150,
+      "id": "jkl012"
+  },
+  {
       "bannerImage": "https://img.freepik.com/free-vector/chef-gastronomy-vertical-poster-template_23-2149941017.jpg?w=2000",
       "instructorName": "Chef Melissa",
       "ratings": 4.7,
-      "enrollmentCount": 1700
-    },
-    {
+      "enrollmentCount": 1700,
+      "price": "$49.99",
+      "availableSeats": 80,
+      "id": "mno345"
+  },
+  {
       "bannerImage": "https://cdn.shopify.com/s/files/1/0526/4461/0217/products/CopyofCakebakingliveclass_a4f626d6-e1a8-4db9-be81-cf1341973548.webp",
       "instructorName": "Euphoria",
       "ratings": 4.7,
-      "enrollmentCount": 1700
-    }
-  ]
-  
+      "enrollmentCount": 1700,
+      "price": "$19.99",
+      "availableSeats": 100,
+      "id": "pqr678"
+  }
+]
