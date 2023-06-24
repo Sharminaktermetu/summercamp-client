@@ -1,14 +1,32 @@
 
 import { useForm } from 'react-hook-form';
 import SocialIcon from '../../Shared/SocialIcon/SocialIcon';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Signup = () => {
+    const {createUser}=useContext(AuthContext)
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const password = watch('password');
-
+    const navigate =useNavigate()
     const onSubmit = (data) => {
-        console.log(data); // Handle form submission here
+        console.log(data); // Handle form submission here\
+        createUser(data.email,data.password)
+       
+        .then((result)=>{
+            const user = result.user;
+            console.log(user);
+            updateProfile(user, {
+                displayName: data.name, 
+                photoURL: data.photoURL
+              })
+              navigate('/')
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
     };
 
    

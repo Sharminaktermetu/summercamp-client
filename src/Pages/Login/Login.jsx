@@ -1,14 +1,26 @@
 import { useForm } from "react-hook-form";
 import SocialIcon from "../../Shared/SocialIcon/SocialIcon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const password = watch('password');
-
+    const {login}=useContext(AuthContext);
+    const navigate =useNavigate()
     const onSubmit = data => {
         console.log(data)
+        login(data.email, data.password)
+        .then((result)=>{
+            const loggeduser = result.user;
+            console.log(loggeduser);
+            navigate("/")
+        })
+
+        .then(()=>{})
+
     };
 
 
