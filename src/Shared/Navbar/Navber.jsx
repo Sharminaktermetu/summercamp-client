@@ -1,15 +1,31 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navber = () => {
+    const {user,logOut}=useContext(AuthContext);
+    const handleLogout=()=>{
+        logOut()
+        .then(()=>{})
+        .catch((error)=>{console.log(console.log(error))})
+    }
     const navli =<>
         <Link to="/"><li><a>Home</a></li></Link>
                         
         <Link><li><a>Instructors</a></li></Link>
         <Link><li><a>Classes</a></li></Link>
-        <Link to="login"><li><a>Login</a></li></Link>
-        {
-            <Link><li><a>Dashboard</a></li></Link>
-        // TODO: profile of user
+        
+        {user?
+           <>
+            <Link to='/dashboard'><li><a>Dashboard</a></li></Link>
+            {/* TODO :remove email from navbar */}
+            <li> <button onClick={handleLogout}>Log out <span className='text-red-500'>{user.email}</span></button ></li>
+           </>            
+           :
+           <>
+           <Link to="login"><li><a>Login</a></li></Link>
+           </>
+         
             
         }
     </>
@@ -34,7 +50,7 @@ const Navber = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+            {user&& <img src={user.photoURL} title={user.displayName}  className="w-10 h-10"/>}
             </div>
         </div>
     );

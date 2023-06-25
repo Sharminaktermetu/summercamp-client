@@ -1,14 +1,16 @@
 import { useForm } from "react-hook-form";
 import SocialIcon from "../../Shared/SocialIcon/SocialIcon";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const password = watch('password');
     const {login}=useContext(AuthContext);
+    const [error,setError]=useState('')
     const navigate =useNavigate()
     const onSubmit = data => {
         console.log(data)
@@ -16,10 +18,19 @@ const Login = () => {
         .then((result)=>{
             const loggeduser = result.user;
             console.log(loggeduser);
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+              })
             navigate("/")
         })
 
-        .then(()=>{})
+        .catch((error)=>{
+            setError(error.message)
+        })
 
     };
 
@@ -31,6 +42,7 @@ const Login = () => {
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h2 className="text-3xl text-center font-extrabold my-10">LOGIN NOW <span className="text-yellow-600">!!!</span></h2>
+                    {error && <div className="text-red-500 font-bold text-center">{error}</div>}
                     <div className="mx-auto w-9/12" >
                     <label>Name</label>
                         <input {...register("name")}
@@ -70,9 +82,10 @@ const Login = () => {
 
 
                         {errors.exampleRequired && <span>This field is required</span>}
+                        <button type="submit" className="w-full btn btn-info mb-12">SUBMIT</button>
                         <SocialIcon></SocialIcon>
                         <p>New to website? <Link to="/signup" className="btn btn-link">Sign up</Link></p>
-                        <button type="submit" className="w-full btn btn-info mb-12">SUBMIT</button>
+                       
                     </div>
 
                 </form>

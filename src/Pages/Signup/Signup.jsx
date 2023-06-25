@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
     const {createUser}=useContext(AuthContext)
@@ -21,6 +22,13 @@ const Signup = () => {
             updateProfile(user, {
                 displayName: data.name, 
                 photoURL: data.photoURL
+              })
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
               })
               navigate('/')
         })
