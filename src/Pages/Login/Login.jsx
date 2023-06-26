@@ -12,20 +12,22 @@ const Login = () => {
     const {login}=useContext(AuthContext);
     const [error,setError]=useState('')
     const navigate =useNavigate()
+    let from = location.state?.from?.pathname || "/";
     const onSubmit = data => {
         console.log(data)
         login(data.email, data.password)
         .then((result)=>{
             const loggeduser = result.user;
             console.log(loggeduser);
+            navigate(from, { replace: true });
             Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Your work has been saved',
+                title: 'Log in successful',
                 showConfirmButton: false,
                 timer: 1500
               })
-            navigate("/")
+            
         })
 
         .catch((error)=>{
@@ -43,12 +45,8 @@ const Login = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h2 className="text-3xl text-center font-extrabold my-10">LOGIN NOW <span className="text-yellow-600">!!!</span></h2>
                     {error && <div className="text-red-500 font-bold text-center">{error}</div>}
-                    <div className="mx-auto w-9/12" >
-                    <label>Name</label>
-                        <input {...register("name")}
-                            type="text"
-                            placeholder="Enter name"
-                            className="input input-bordered w-full input-warning mb-3" />
+                    <div className="mx-auto" >
+                    
 
                         <label>Email</label>
                         <input {...register("email", { required: true })}

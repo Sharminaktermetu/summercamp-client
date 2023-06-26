@@ -4,6 +4,9 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/Signup";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
+import PopularClass from "../Pages/Home/PopularClass/PopularClass";
+import AllClasses from "../Pages/AllClasses/AllClasses";
+
 
 
   const router = createBrowserRouter([
@@ -22,6 +25,10 @@ import Dashboard from "../Layouts/Dashboard/Dashboard";
         {
           path:"signup",
           element:<SignUp></SignUp>
+        },
+        {
+          path:"allclasses",
+          element:<AllClasses></AllClasses>
         },
         {
           path:"dashboard",
