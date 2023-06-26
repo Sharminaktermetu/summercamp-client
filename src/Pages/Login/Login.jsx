@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import SocialIcon from "../../Shared/SocialIcon/SocialIcon";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -11,8 +11,11 @@ const Login = () => {
     const password = watch('password');
     const {login}=useContext(AuthContext);
     const [error,setError]=useState('')
+    const location =useLocation()
     const navigate =useNavigate()
-    let from = location.state?.from?.pathname || "/";
+    
+    const from = location.state?.from?.pathname || "/";
+
     const onSubmit = data => {
         console.log(data)
         login(data.email, data.password)

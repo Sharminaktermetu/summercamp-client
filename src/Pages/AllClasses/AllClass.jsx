@@ -4,13 +4,15 @@ import useAuth from "../../hooks/useAuth";
 
 
 const AllClass = ({ activity }) => {
-    const { instructorName, bannerImage, ratings, enrollmentCount, price, availableSeats } = activity;
+    const { instructorName, bannerImage, ratings, enrollmentCount, price, availableSeats,id } = activity;
+
     const{user}=useAuth();
     const navigate=useNavigate();
     const location=useLocation();
-    
+
     const handleOrder=(activity)=>{
         console.log(activity);
+        const orderItem ={itemId:id, instructorName, bannerImage,price,email:user?.email,availableSeats}
         if(user){
             fetch('http://localhost:5000/cart',{
               method:'POST',
@@ -20,11 +22,11 @@ const AllClass = ({ activity }) => {
             .then(res=>res.json())
             .then(data=>{
               if (data.insertedId) {
-                refetch()
+                
                 Swal.fire({
                   position: 'top-end',
                   icon: 'success',
-                  title:`${name} added to cart`,
+                  title:`classe added to cart`,
                   showConfirmButton: false,
                   timer: 1500
                 })
@@ -45,7 +47,7 @@ const AllClass = ({ activity }) => {
               if (result.isConfirmed) {
                 navigate('/login', {state:{from:location}})
               }
-            })
+            });
           }
     }
     return (
@@ -55,8 +57,7 @@ const AllClass = ({ activity }) => {
                 <h2 className="card-title">{instructorName}</h2>
                 <p>Ratings:{ratings}</p>
                 <p>Enroll: {enrollmentCount}</p>
-                <div className="flex font-bold">
-                      
+                <div className="flex font-bold">                     
                     <p>Price:{price}</p>
                     <p>Available Seats:{availableSeats}</p>
                     </div>

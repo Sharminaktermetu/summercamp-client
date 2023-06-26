@@ -35,5 +35,18 @@
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
     "vite": "^4.3.9"
-  }
+  },
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-Sharminaktermetu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-Sharminaktermetu/issues"
+  },
+  "homepage": "https://github.com/programming-hero-web-course1/b712-summer-camp-client-side-Sharminaktermetu#readme",
+  "description": ""
 }
