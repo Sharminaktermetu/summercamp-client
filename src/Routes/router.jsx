@@ -6,6 +6,8 @@ import SignUp from "../Pages/Signup/Signup";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
 import PopularClass from "../Pages/Home/PopularClass/PopularClass";
 import AllClasses from "../Pages/AllClasses/AllClasses";
+import PrivateRoute from "./PrivateRoute";
+import MySelectedClass from "../Dashboard/MySelectedClass/MySelectedClass";
 
 
 
@@ -32,11 +34,11 @@ import AllClasses from "../Pages/AllClasses/AllClasses";
         },
         {
           path:"dashboard",
-          element: <Dashboard></Dashboard>,
+          element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
           children:[
             {
-              path:"data",
-              element:<p>This is home</p>
+              path:"myclass",
+              element:<MySelectedClass></MySelectedClass>
             }
           ]
         }

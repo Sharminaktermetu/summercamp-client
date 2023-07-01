@@ -1,6 +1,7 @@
 import {useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import useCart from "../../hooks/useCart";
 
 
 const AllClass = ({ activity }) => {
@@ -9,7 +10,7 @@ const AllClass = ({ activity }) => {
     const{user}=useAuth();
     const navigate=useNavigate();
     const location=useLocation();
-
+   const [cart,refetch]=useCart()
     const handleOrder=(activity)=>{
         console.log(activity);
         const orderItem ={itemId:id, instructorName, bannerImage,price,email:user?.email,availableSeats}
@@ -22,7 +23,7 @@ const AllClass = ({ activity }) => {
             .then(res=>res.json())
             .then(data=>{
               if (data.insertedId) {
-                
+                refetch()
                 Swal.fire({
                   position: 'top-end',
                   icon: 'success',

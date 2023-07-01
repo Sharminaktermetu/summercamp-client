@@ -1,6 +1,8 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 
 const Dashboard = () => {
+  const [cart]=useCart();
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -15,8 +17,8 @@ const Dashboard = () => {
     <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
       {/* Sidebar content here */}
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
+      <Link><li><a>Selected class <span>{cart?.length ||0}</span></a></li></Link>
+      <li><a>Sidebar Item </a></li>
     </ul>
   
   </div>
