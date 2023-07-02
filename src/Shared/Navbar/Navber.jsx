@@ -17,7 +17,7 @@ const Navber = () => {
         
         {user?
            <>
-            <Link to='/dashboard'><li><a>Dashboard</a></li></Link>
+            <Link to='/dashboard/selectedclass'><li><a>Dashboard</a></li></Link>
             {/* TODO :remove email from navbar */}
             <li> <button onClick={handleLogout}>Log out <span className='text-red-500'>{user.email}</span></button ></li>
            </>            

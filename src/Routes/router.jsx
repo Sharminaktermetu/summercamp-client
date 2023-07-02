@@ -37,7 +37,7 @@ import MySelectedClass from "../Dashboard/MySelectedClass/MySelectedClass";
           element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
           children:[
             {
-              path:"myclass",
+              path:"selectedclass",
               element:<MySelectedClass></MySelectedClass>
             }
           ]

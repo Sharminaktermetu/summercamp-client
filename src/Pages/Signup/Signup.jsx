@@ -9,11 +9,11 @@ import Swal from 'sweetalert2';
 
 const Signup = () => {
     const {createUser}=useContext(AuthContext)
-    const { register, handleSubmit, formState: { errors }, watch } = useForm();
+    const { register, handleSubmit, formState: { errors }, watch,reset } = useForm();
     const password = watch('password');
     const navigate =useNavigate()
     const onSubmit = (data) => {
-        console.log(data); // Handle form submission here\
+        
         createUser(data.email,data.password)
        
         .then((result)=>{
@@ -23,14 +23,32 @@ const Signup = () => {
                 displayName: data.name, 
                 photoURL: data.photoURL
               })
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Your work has been saved',
-                showConfirmButton: false,
-                timer: 1500
+
+              .then(() => {
+                const savedUser= {name:data.name, email:data.email}
+                fetch('http://localhost:5000/user',{
+                  method:'POST',
+                  headers:{'content-type':'application/json'},
+                  body:JSON.stringify(savedUser)
+                })
+    
+                  .then(res => res.json())
+                  .then(data => {
+                    if (data.insertedId) {
+                      reset()
+                      Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'User create successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                      navigate('/')
+                    }
+                  })
+    
               })
-              navigate('/')
+              .catch((error) => { console.log(error) })
         })
         .catch((error)=>{
             console.log(error);
