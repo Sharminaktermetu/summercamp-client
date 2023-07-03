@@ -9,6 +9,9 @@ import AllClasses from "../Pages/AllClasses/AllClasses";
 import PrivateRoute from "./PrivateRoute";
 import MySelectedClass from "../Dashboard/MySelectedClass/MySelectedClass";
 import AllUser from "../Dashboard/MySelectedClass/AllUser/AllUser";
+import AddaClass from "../Dashboard/Addaclass/AddaClass";
+import InstructorRoute from "./InstructorRoute";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -37,13 +40,21 @@ import AllUser from "../Dashboard/MySelectedClass/AllUser/AllUser";
           path:"dashboard",
           element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
           children:[
+            // student route
             {
               path:"selectedclass",
               element:<MySelectedClass></MySelectedClass>
             },
+            // admin route
             {
               path:"alluser",
-              element:<AllUser></AllUser>
+              element:<AdminRoute><AllUser></AllUser></AdminRoute>
+            },
+            // instructor route
+            {
+              path:"addaclass",
+              element:<InstructorRoute><AddaClass></AddaClass></InstructorRoute>
+
             }
           ]
         }
