@@ -1,10 +1,14 @@
 import { Link, Outlet } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Dashboard = () => {
   // Todo: update admin and instructor
-  const isAdmin = true;
-  const isInstructor =true;
+  // const isAdmin = true;
+  // const isInstructor =true;
 
+  const [isAdmin]=useAdmin();
+  const [isInstructor]=useInstructor();
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -44,7 +48,8 @@ const Dashboard = () => {
               </li>
             </Link>
             )}
-            {!isAdmin && !isInstructor && (
+            
+            {!isAdmin  && !isInstructor && (
               <>
                 
               <Link to="/dashboard/selectedclass">
