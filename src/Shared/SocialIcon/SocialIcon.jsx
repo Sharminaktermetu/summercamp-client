@@ -1,6 +1,7 @@
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const SocialIcon = () => {
   const { googleLog } = useAuth();
@@ -10,9 +11,31 @@ const SocialIcon = () => {
 
   const handleGoogleLogin = () => {
     googleLog()
-      .then(() => {
-        navigate(from, { replace: true });
+    .then((result)=>{
+      const loggedUser =result.user;
+      console.log(loggedUser);
+      const savedUser= {name:loggedUser.displayName, email:loggedUser.email}
+      fetch('http://localhost:5000/user',{
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify(savedUser)
       })
+
+        .then(res => res.json())
+        .then(() => {
+
+             Swal.fire({
+               position: 'top-end',
+               icon: 'success',
+               title: 'User create successfully',
+               showConfirmButton: false,
+               timer: 1500
+             }) 
+             navigate(from, { replace: true });
+          
+        })
+     
+  })
       .catch((error) => {
         console.log(error);
       });

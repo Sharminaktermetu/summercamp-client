@@ -35,14 +35,14 @@ const Signup = () => {
                   .then(res => res.json())
                   .then(data => {
                     if (data.insertedId) {
-                      reset()
+                     reset()
                       Swal.fire({
                         position: 'top-end',
                         icon: 'success',
                         title: 'User create successfully',
                         showConfirmButton: false,
                         timer: 1500
-                      })
+                      }) 
                       navigate('/')
                     }
                   })

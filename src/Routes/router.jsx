@@ -8,6 +8,7 @@ import PopularClass from "../Pages/Home/PopularClass/PopularClass";
 import AllClasses from "../Pages/AllClasses/AllClasses";
 import PrivateRoute from "./PrivateRoute";
 import MySelectedClass from "../Dashboard/MySelectedClass/MySelectedClass";
+import AllUser from "../Dashboard/MySelectedClass/AllUser/AllUser";
 
 
 
@@ -39,6 +40,10 @@ import MySelectedClass from "../Dashboard/MySelectedClass/MySelectedClass";
             {
               path:"selectedclass",
               element:<MySelectedClass></MySelectedClass>
+            },
+            {
+              path:"alluser",
+              element:<AllUser></AllUser>
             }
           ]
         }
