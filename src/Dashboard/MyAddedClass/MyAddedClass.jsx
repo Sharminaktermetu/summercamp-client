@@ -24,6 +24,8 @@ const MyAddedClass = () => {
         <th>Status</th>
         <th>Available Seats</th>
         <th>Total Enroll</th>
+        <th>Feedback</th>
+        <th>Update</th>
       </tr>
     </thead>
     <tbody>
@@ -48,9 +50,13 @@ const MyAddedClass = () => {
               {item.className}
               
             </td>
+           
             <td className="text-red-400 font-bold">{item.status}</td>
             <td>{item.availableSeats}</td>
-            <td>0</td>   
+            <td>0</td>
+            <td>No fidback</td>
+            <td><button className="btn btn-info btn-sm">Update</button></td>
+             
           </tr>
         ))}
     

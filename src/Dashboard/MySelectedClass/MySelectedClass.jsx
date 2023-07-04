@@ -43,7 +43,7 @@ const MySelectedClass = () => {
             <div className='flex items-center space-x-8'>
                 <h3 className='text-3xl font-semibold'>Total items :{cart.length}</h3>
                 <h3 className='text-3xl font-semibold'>Total price : ${price}</h3>
-                <Link to=""><button className='btn btn-sm btn-info'>pay</button></Link>
+                <Link to="/dashboard/payment"><button className='btn btn-sm btn-info'>pay</button></Link>
             </div>
             <div className="overflow-x-auto">
   <table className="table">

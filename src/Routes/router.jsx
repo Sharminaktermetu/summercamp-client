@@ -13,6 +13,7 @@ import AddaClass from "../Dashboard/Addaclass/AddaClass";
 import InstructorRoute from "./InstructorRoute";
 import AdminRoute from "./AdminRoute";
 import MyAddedClass from "../Dashboard/MyAddedClass/MyAddedClass";
+import Payment from "../Dashboard/Payment/Payment";
 
 
 
@@ -45,6 +46,10 @@ import MyAddedClass from "../Dashboard/MyAddedClass/MyAddedClass";
             {
               path:"selectedclass",
               element:<MySelectedClass></MySelectedClass>
+            },
+            {
+              path:"payment",
+              element:<Payment></Payment>
             },
             // admin route
             {
