@@ -12,6 +12,7 @@ import AllUser from "../Dashboard/MySelectedClass/AllUser/AllUser";
 import AddaClass from "../Dashboard/Addaclass/AddaClass";
 import InstructorRoute from "./InstructorRoute";
 import AdminRoute from "./AdminRoute";
+import MyAddedClass from "../Dashboard/MyAddedClass/MyAddedClass";
 
 
 
@@ -54,6 +55,11 @@ import AdminRoute from "./AdminRoute";
             {
               path:"addaclass",
               element:<InstructorRoute><AddaClass></AddaClass></InstructorRoute>
+
+            },
+            {
+              path:"myaddcllass",
+              element:<InstructorRoute><MyAddedClass></MyAddedClass></InstructorRoute>
 
             }
           ]

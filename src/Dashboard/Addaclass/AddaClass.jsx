@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const img_hosting_token = import.meta.env.VITE_IMAGE_TOKEN;
 
@@ -8,7 +10,7 @@ function AddClassForm() {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const { user } = useAuth();
-
+  const [axiosSecure]=useAxiosSecure()
   const onSubmit = (data) => {
     const formData = new FormData();
 
@@ -21,11 +23,11 @@ function AddClassForm() {
       .then(imageResponse => {
         console.log(imageResponse);
         if (imageResponse.success) {
-          const image_URL = imageResponse.data.display_url;
+          const bannerImage = imageResponse.data.display_url;
           
           const newClass = {
             className: data.name,
-            image_URL,
+            bannerImage,
             instructorName: user.displayName,
             instructorEmail: user.email,
             availableSeats: parseInt(data.availableSeats),
@@ -33,7 +35,18 @@ function AddClassForm() {
             status: 'pending',
           };
           console.log(newClass);
-
+          axiosSecure.post('/class',newClass)
+          .then(data=>{
+            console.log('after posting new class', data.data);
+            if (data.data.insertedId) {
+              
+            Swal.fire(
+              'Good job!',
+              'You added  a class!',
+              'warning'
+            )
+          }
+          })
         }
       })
 
