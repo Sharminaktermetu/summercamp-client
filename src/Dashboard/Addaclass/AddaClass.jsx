@@ -33,6 +33,7 @@ function AddClassForm() {
             availableSeats: parseInt(data.availableSeats),
             price: parseFloat(data.price),
             status: 'pending',
+            enrollmentCount:0
           };
           console.log(newClass);
           axiosSecure.post('/class',newClass)

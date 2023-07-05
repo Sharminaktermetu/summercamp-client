@@ -16,6 +16,7 @@ import MyAddedClass from "../Dashboard/MyAddedClass/MyAddedClass";
 import Payment from "../Dashboard/Payment/Payment";
 import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
 import Instructors from "../Pages/Instructors/Instructors";
+import ManageClass from "../Dashboard/ManageClass/ManageClass";
 
 
 
@@ -65,6 +66,10 @@ import Instructors from "../Pages/Instructors/Instructors";
             {
               path:"alluser",
               element:<AdminRoute><AllUser></AllUser></AdminRoute>
+            },
+            {
+              path:"manageclass",
+              element:<AdminRoute><ManageClass></ManageClass></AdminRoute>
             },
             // instructor route
             {

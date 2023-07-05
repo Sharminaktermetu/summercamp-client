@@ -21,7 +21,7 @@ const AllUser = () => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title:`classe added to cart`,
+                    title:`User updated to Admin`,
                     showConfirmButton: false,
                     timer: 1500
                   })
@@ -40,7 +40,7 @@ const AllUser = () => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title:`classe added to cart`,
+                    title:`User updated to Instructor`,
                     showConfirmButton: false,
                     timer: 1500
                   })

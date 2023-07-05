@@ -5,7 +5,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 const PaymentHistory = () => {
     const [axiosSecure]=useAxiosSecure()
     const{user}=useAuth()
-    const { data: payments = [], refetch } = useQuery(['payment'], async () => {
+    const { data: payments = [] } = useQuery(['payment'], async () => {
         const res = await axiosSecure.get(`/payment/${user.email}`)
         return res.data
     })
@@ -13,7 +13,7 @@ const PaymentHistory = () => {
     return (
         <div>
         
-        <div className="overflow-x-auto">
+  <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
     <thead>

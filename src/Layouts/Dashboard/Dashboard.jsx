@@ -3,9 +3,6 @@ import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 
 const Dashboard = () => {
-  // Todo: update admin and instructor
-  // const isAdmin = true;
-  // const isInstructor =true;
 
   const [isAdmin]=useAdmin();
   const [isInstructor]=useInstructor();
