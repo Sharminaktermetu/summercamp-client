@@ -9,6 +9,7 @@ const PaymentHistory = () => {
         const res = await axiosSecure.get(`/payment/${user.email}`)
         return res.data
     })
+    console.log(payments);
     return (
         <div>
         
@@ -27,9 +28,11 @@ const PaymentHistory = () => {
       {/* row 1 */}
       {payments.map((payment,index)=><tr key={payment._id} className="bg-base-200">
         <th>{index+1}</th>
+        <td><img src={payment.cartItemsImage} alt="" /></td>
         <td>{payment.email}</td>
         <td>{payment.quantity} class</td>
         <td>{payment.transactionId}</td>
+        
       </tr>)}
       
       

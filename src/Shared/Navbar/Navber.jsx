@@ -12,7 +12,7 @@ const Navber = () => {
     const navli =<>
         <Link to="/"><li><a>Home</a></li></Link>
                         
-        <Link><li><a>Instructors</a></li></Link>
+        <Link to="/instructors"><li><a>Instructors</a></li></Link>
         <Link to="/allclasses"><li><a>Classes</a></li></Link>
         
         {user?

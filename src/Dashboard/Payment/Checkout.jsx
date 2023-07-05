@@ -74,6 +74,7 @@ const Checkout = ({price,cart}) => {
             email: user?.email,
             itemsId:cart.map(item=>item._id),
             cartItemsId:cart.map(item=>item.itemId),
+            cartItemsImage:cart.map(item=>item.bannerImage),
             quantity:cart.length,
             status:'pending',
             transactionId,

@@ -13,47 +13,52 @@ const Signup = () => {
     const password = watch('password');
     const navigate =useNavigate()
     const onSubmit = (data) => {
-        
-        createUser(data.email,data.password)
-       
-        .then((result)=>{
+        console.log(data);
+        createUser(data.email, data.password)
+          .then((result) => {
             const user = result.user;
             console.log(user);
+            
             updateProfile(user, {
-                displayName: data.name, 
-                photoURL: data.photoURL
-              })
-
+              displayName: data.name,
+              photoURL: data.photoURL
+            })
               .then(() => {
-                const savedUser= {name:data.name, email:data.email}
-                fetch('http://localhost:5000/user',{
-                  method:'POST',
-                  headers:{'content-type':'application/json'},
-                  body:JSON.stringify(savedUser)
+                const savedUser = {
+                  name: data.name,
+                  email: data.email,
+                  photoURL: data.photoURL // Include the photoURL in the savedUser object
+                };
+                
+                fetch('http://localhost:5000/user', {
+                  method: 'POST',
+                  headers: { 'content-type': 'application/json' },
+                  body: JSON.stringify(savedUser)
                 })
-    
                   .then(res => res.json())
                   .then(data => {
                     if (data.insertedId) {
-                     reset()
+                      reset();
                       Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'User create successfully',
+                        title: 'User created successfully',
                         showConfirmButton: false,
                         timer: 1500
-                      }) 
-                      navigate('/')
+                      });
+                      navigate('/');
                     }
-                  })
-    
+                  });
               })
-              .catch((error) => { console.log(error) })
-        })
-        .catch((error)=>{
+              .catch((error) => {
+                console.log(error);
+              });
+          })
+          .catch((error) => {
             console.log(error);
-        })
-    };
+          });
+      };
+    
 
    
 
