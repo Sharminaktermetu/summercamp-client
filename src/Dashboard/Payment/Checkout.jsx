@@ -3,6 +3,7 @@ import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Checkout = ({price,cart}) => {
@@ -83,7 +84,13 @@ const Checkout = ({price,cart}) => {
             .then(res=>{
               console.log(res.data);
               if (res.data.result.insertedId) {
-                // 
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Payment successfully Done',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
               }
             })
            }
