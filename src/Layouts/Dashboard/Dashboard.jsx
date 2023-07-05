@@ -65,6 +65,11 @@ const Dashboard = () => {
                 <a>Selected class</a>
               </li>
             </Link>
+              <Link to="/dashboard/paymenthistory">
+              <li>
+                <a>Payment History</a>
+              </li>
+            </Link>
               </>
             )}
           </ul>

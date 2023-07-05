@@ -14,6 +14,7 @@ import InstructorRoute from "./InstructorRoute";
 import AdminRoute from "./AdminRoute";
 import MyAddedClass from "../Dashboard/MyAddedClass/MyAddedClass";
 import Payment from "../Dashboard/Payment/Payment";
+import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
 
 
 
@@ -50,6 +51,10 @@ import Payment from "../Dashboard/Payment/Payment";
             {
               path:"payment",
               element:<Payment></Payment>
+            },
+            {
+              path:"paymenthistory",
+              element:<PaymentHistory></PaymentHistory>
             },
             // admin route
             {
