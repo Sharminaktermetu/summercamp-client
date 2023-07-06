@@ -18,6 +18,7 @@ import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
 import Instructors from "../Pages/Instructors/Instructors";
 import ManageClass from "../Dashboard/ManageClass/ManageClass";
 import Feedback from "../Dashboard/ManageClass/Feedback";
+import ErrorPage from "../Pages/Errorpage.jsx/ErrorPage";
 
 
 
@@ -25,6 +26,7 @@ import Feedback from "../Dashboard/ManageClass/Feedback";
     {
       path: "/",
       element: <Main></Main>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
           path:"/",

@@ -56,7 +56,7 @@ const AllClass = ({ activity }) => {
     }
   }
   return (
-    <div className="card card-compact bg-base-100 shadow-xl space-x-5">
+    <div className={`card card-compact bg-base-100 shadow-xl space-x-5 ${availableSeats <= 0 ? 'bg-red-500' : ''}`}>
       <figure><img src={bannerImage} alt="Shoes" className="h-72" /></figure>
       <div className="card-body">
         <h2 className="card-title">{instructorName}</h2>
@@ -73,7 +73,7 @@ const AllClass = ({ activity }) => {
           <button
             className="btn btn-info"
             onClick={() => { handleOrder(activity) }}
-            disabled={isAdmin || isInstructor}
+            disabled={isAdmin || isInstructor || availableSeats<=0}
           >
             Enroll Now
           </button>

@@ -14,7 +14,7 @@ const PopularClass = () => {
         <div className="mx-auto">
         <SectionTitle
             title={'Our popular classes'}
-            heading={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, iure.Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, iure."}
+            heading={"Discover the joy of cooking and culinary creativity at our summer camp."}
         ></SectionTitle>
 
         <div className="grid grid-cols-3 gap-10 mt-10">
