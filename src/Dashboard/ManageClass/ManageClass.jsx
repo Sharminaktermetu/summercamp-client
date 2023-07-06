@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const ManageClass = () => {
@@ -10,8 +11,6 @@ const ManageClass = () => {
         return res.data
     })
     const handleApprove = async (classId) => {
-
-
         const response = await fetch(`https://summer-camp-server-alpha-jet.vercel.app/class/approve/${classId}`, {
             method: 'PATCH',
             headers: {
@@ -35,6 +34,27 @@ const ManageClass = () => {
 
 
     };
+    const handleDeny = async (classId) => {
+        const response = await fetch(`https://summer-camp-server-alpha-jet.vercel.app/class/deny/${classId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            refetch()
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `Class Denyed`,
+                showConfirmButton: false,
+                timer: 1500
+            })
+        } 
+
+
+    };
     console.log(classess);
     return (
         <div className="grid lg:grid-cols-2 gap-10 w-10/12 mx-auto font-semibold pb-16">
@@ -51,18 +71,29 @@ const ManageClass = () => {
 
 
                             {/*  */}
-                            {manageClass.status === "Approved" ? (
-                                <button className="btn btn-disabled btn-sm px-3" disabled>
-                                    Approve
-                                </button>
+                            {manageClass.status === "Approved" || manageClass.status === "Deny" ? (
+                                <>
+                                    <button className="btn btn-disabled btn-sm px-3" disabled>
+                                        Approve
+                                    </button>
+                                    <button className="btn btn-disabled btn-sm px-3" disabled>
+                                        Deny
+                                    </button>
+                                </>
                             ) : (
-                                <button onClick={() => handleApprove(manageClass._id)} className="btn btn-secondary btn-sm">
-                                    Approve
-                                </button>
+                                <>
+                                    <button onClick={() => handleApprove(manageClass._id)} className="btn btn-secondary btn-sm">
+                                        Approve
+                                    </button>
+                                    <button onClick={() => handleDeny(manageClass._id)} className="btn btn-secondary btn-sm">
+                                        Deny
+                                    </button>
+                                </>
                             )}
 
-                            <button>Deny</button>
-                            <button>FeedBack</button>
+
+                       <Link to="/feedback"> <button>FeedBack</button></Link>
+                           
                         </div>
                     </div>
                 </div>)

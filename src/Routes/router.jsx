@@ -17,6 +17,7 @@ import Payment from "../Dashboard/Payment/Payment";
 import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
 import Instructors from "../Pages/Instructors/Instructors";
 import ManageClass from "../Dashboard/ManageClass/ManageClass";
+import Feedback from "../Dashboard/ManageClass/Feedback";
 
 
 
@@ -44,6 +45,10 @@ import ManageClass from "../Dashboard/ManageClass/ManageClass";
         {
           path:"allclasses",
           element:<AllClasses></AllClasses>
+        },
+        {
+          path:"feedback",
+          element:<Feedback></Feedback>
         },
         {
           path:"dashboard",
