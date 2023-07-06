@@ -15,7 +15,7 @@ const SocialIcon = () => {
       const loggedUser =result.user;
       console.log(loggedUser);
       const savedUser= {name:loggedUser.displayName, email:loggedUser.email}
-      fetch('http://localhost:5000/user',{
+      fetch('https://summer-camp-server-alpha-jet.vercel.app/user',{
         method:'POST',
         headers:{'content-type':'application/json'},
         body:JSON.stringify(savedUser)

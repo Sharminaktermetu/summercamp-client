@@ -19,7 +19,7 @@ const AllClass = ({ activity }) => {
     console.log(activity);
     const orderItem = { itemId: id, instructorName, bannerImage, price, email: user?.email, availableSeats }
     if (user) {
-      fetch('http://localhost:5000/cart', {
+      fetch('https://summer-camp-server-alpha-jet.vercel.app/cart', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(orderItem)

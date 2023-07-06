@@ -12,7 +12,7 @@ const ManageClass = () => {
     const handleApprove = async (classId) => {
 
 
-        const response = await fetch(`http://localhost:5000/class/approve/${classId}`, {
+        const response = await fetch(`https://summer-camp-server-alpha-jet.vercel.app/class/approve/${classId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

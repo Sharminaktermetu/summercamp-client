@@ -30,7 +30,7 @@ const Signup = () => {
                   photoURL: data.photoURL // Include the photoURL in the savedUser object
                 };
                 
-                fetch('http://localhost:5000/user', {
+                fetch('https://summer-camp-server-alpha-jet.vercel.app/user', {
                   method: 'POST',
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify(savedUser)

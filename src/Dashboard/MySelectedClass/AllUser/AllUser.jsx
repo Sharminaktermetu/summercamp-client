@@ -10,7 +10,7 @@ const AllUser = () => {
         return res.data
     })
     const handleMakeAdmin =(id)=>{
-        fetch(`http://localhost:5000/user/admin/${id}`,{
+        fetch(`https://summer-camp-server-alpha-jet.vercel.app/user/admin/${id}`,{
             method:'PATCH'
         })
         .then(res=>res.json())
@@ -29,7 +29,7 @@ const AllUser = () => {
         })
     }
     const handleMakeInstructor =(id)=>{
-        fetch(`http://localhost:5000/user/instructor/${id}`,{
+        fetch(`https://summer-camp-server-alpha-jet.vercel.app/user/instructor/${id}`,{
             method:'PATCH'
         })
         .then(res=>res.json())
